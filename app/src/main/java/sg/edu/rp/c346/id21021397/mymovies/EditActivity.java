@@ -71,10 +71,11 @@ public class EditActivity extends AppCompatActivity {
                 }
             }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
 
-            }
+                }
+            });
 
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {

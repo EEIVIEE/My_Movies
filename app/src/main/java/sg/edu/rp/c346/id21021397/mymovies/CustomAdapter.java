@@ -44,7 +44,7 @@ public class CustomAdapter extends ArrayAdapter {
         // Set values to the TextView to display the corresponding information
         tvName.setText(currentMovie.getName());
         tvGenre.setText(String.valueOf(currentMovie.getGenre()));
-        tvYear.setText(currentMovie.getYearReleased());
+        tvYear.setText(currentMovie.toString());
 
 
 
