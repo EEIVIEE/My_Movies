@@ -1,16 +1,26 @@
 package sg.edu.rp.c346.id21021397.mymovies;
 
 public class Movie {
+    int id;
     String name;
     String genre;
     int yearReleased;
-    int rating;
+    String rating;
 
-    public Movie(String name, String genre, int yearReleased, int rating) {
+    public Movie(int id, String name, String genre, int yearReleased, String rating) {
+        this.id = id;
         this.name = name;
         this.genre = genre;
         this.yearReleased = yearReleased;
         this.rating = rating;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -37,11 +47,11 @@ public class Movie {
         this.yearReleased = yearReleased;
     }
 
-    public int getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
@@ -55,19 +65,4 @@ public class Movie {
                 '}';
     }
 
-    private String getRating(int rating) {
-        switch (rating) {
-            case 1: return "*";
-
-            case 2: return "* *";
-
-            case 3: return "* * *";
-
-            case 4: return "* * * *";
-
-            case 5: return "* * * * *";
-
-            default: return "";
-        }
-    }
 }
