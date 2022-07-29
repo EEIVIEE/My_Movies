@@ -10,9 +10,11 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class EditActivity extends AppCompatActivity {
 
+    TextView tvTest;
     EditText etID, etTitle, etGenre, etYear;
     Button btnUpdate, btnDelete, btnCancel;
     Movie data;
@@ -24,6 +26,7 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
+        tvTest = findViewById(R.id.tvTest);
         etID = findViewById(R.id.etID);
         etTitle = findViewById(R.id.etTitle);
         etGenre = findViewById(R.id.etGenre);
@@ -37,7 +40,6 @@ public class EditActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         data = (Movie) i.getSerializableExtra("data");
-
         etID.setFocusable(false);
         etID.setText(String.valueOf(data.getId()));
         etTitle.setText(data.getName());
@@ -49,27 +51,34 @@ public class EditActivity extends AppCompatActivity {
                 switch (position){
                     case 0:
                         Rating = "G";
+                        tvTest.setText(Rating);
                         break;
                     case 1:
                         Rating = "PG";
+                        tvTest.setText(Rating);
                         break;
                     case 2:
                         Rating = "PG13";
+                        tvTest.setText(Rating);
                         break;
                     case 3:
                         Rating = "NC16";
+                        tvTest.setText(Rating);
                         break;
                     case 4:
                         Rating = "M18";
+                        tvTest.setText(Rating);
                         break;
                     case 5:
                         Rating = "R21";
+                        tvTest.setText(Rating);
                         break;
                     default:
                         Rating = "";
                         break;
                 }
             }
+
 
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {

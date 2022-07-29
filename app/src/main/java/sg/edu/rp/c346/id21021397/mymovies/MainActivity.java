@@ -11,9 +11,11 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
 
     EditText etTitle, etGenre, etYear;
     Button btnInsert, btnShow;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         spRating = findViewById(R.id.spRating);
         btnInsert = findViewById(R.id.btnUpdate);
         btnShow = findViewById(R.id.btnDelete);
+        Rating = "G";
 
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 spRating.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        switch (position) {
+                        switch (position){
                             case 0:
                                 Rating = "G";
                                 break;
