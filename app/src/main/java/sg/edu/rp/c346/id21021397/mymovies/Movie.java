@@ -59,7 +59,7 @@ public class Movie implements Serializable {
 
     @Override
     public String toString() {
-        return yearReleased + " ";
+        return yearReleased + " \n" +rating;
     }
 
 }

@@ -40,6 +40,7 @@ public class EditActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         data = (Movie) i.getSerializableExtra("data");
+
         etID.setFocusable(false);
         etID.setText(String.valueOf(data.getId()));
         etTitle.setText(data.getName());
@@ -78,7 +79,6 @@ public class EditActivity extends AppCompatActivity {
                         break;
                 }
             }
-
 
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {

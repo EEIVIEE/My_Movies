@@ -36,6 +36,7 @@ public class CustomAdapter extends ArrayAdapter {
         TextView tvName = rowView.findViewById(R.id.tvName);
         TextView tvGenre = rowView.findViewById(R.id.tvGenre);
         TextView tvYear = rowView.findViewById(R.id.tvYear);
+        TextView tvRate = rowView.findViewById(R.id.tvRating);
 
 
         // Obtain the Android Version information based on the position
@@ -45,6 +46,7 @@ public class CustomAdapter extends ArrayAdapter {
         tvName.setText(currentMovie.getName());
         tvGenre.setText(String.valueOf(currentMovie.getGenre()));
         tvYear.setText(currentMovie.toString());
+
 
 
 
