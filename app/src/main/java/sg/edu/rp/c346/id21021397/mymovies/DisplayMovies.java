@@ -57,6 +57,7 @@ public class DisplayMovies extends AppCompatActivity {
                 Movie data = alMovie.get(position);
                 Intent i = new Intent(DisplayMovies.this,
                         EditActivity.class);
+                i.putExtra("data", data);
                 startActivity(i);
             }
         });

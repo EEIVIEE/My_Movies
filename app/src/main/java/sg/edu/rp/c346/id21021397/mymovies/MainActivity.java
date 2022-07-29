@@ -38,7 +38,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String Title = etTitle.getText().toString();
                 String Genre = etGenre.getText().toString();
-                int Year = Integer.parseInt(etYear.getText().toString());
+                int Year = 0;
+                if(etYear.getText().toString().isEmpty()){
+
+                } else {
+                    Year = Integer.parseInt(etYear.getText().toString());
+                }
+
                 spRating.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -72,13 +78,17 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-
-                DBHelper dbh = new DBHelper(MainActivity.this);
-                long inserted_id = dbh.insertMovie(Title, Genre, Year, Rating);
-
-                if (inserted_id != -1) {
-                    Toast.makeText(MainActivity.this, "Insert successful",
+                if (Title.isEmpty() || Genre.isEmpty() || Year > 2022 || Year < 1960){
+                    Toast.makeText(MainActivity.this, "Insert unsuccessful",
                             Toast.LENGTH_SHORT).show();
+                } else {
+                    DBHelper dbh = new DBHelper(MainActivity.this);
+                    long inserted_id = dbh.insertMovie(Title, Genre, Year, Rating);
+
+                    if (inserted_id != -1) {
+                        Toast.makeText(MainActivity.this, "Insert successful",
+                                Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
