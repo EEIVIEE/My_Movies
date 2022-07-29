@@ -8,15 +8,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-
+    TextView tvTest;
     EditText etTitle, etGenre, etYear;
     Button btnInsert, btnShow;
     Spinner spRating;
@@ -31,11 +29,49 @@ public class MainActivity extends AppCompatActivity {
         etTitle = findViewById(R.id.etTitle);
         etGenre = findViewById(R.id.etGenre);
         etYear = findViewById(R.id.etYear);
-        spRating = findViewById(R.id.spRating);
+        spRating = findViewById(R.id.spRatingMain);
         btnInsert = findViewById(R.id.btnUpdate);
         btnShow = findViewById(R.id.btnDelete);
-        Rating = "G";
+        tvTest = findViewById(R.id.tvTestMain);
+        spRating.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:
+                        Rating = "G";
+                        tvTest.setText(Rating);
+                        break;
+                    case 1:
+                        Rating = "PG";
+                        tvTest.setText(Rating);
+                        break;
+                    case 2:
+                        Rating = "PG13";
+                        tvTest.setText(Rating);
+                        break;
+                    case 3:
+                        Rating = "NC16";
+                        tvTest.setText(Rating);
+                        break;
+                    case 4:
+                        Rating = "M18";
+                        tvTest.setText(Rating);
+                        break;
+                    case 5:
+                        Rating = "R21";
+                        tvTest.setText(Rating);
+                        break;
+                    default:
+                        Rating = "";
+                        break;
+                }
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                tvTest.setText("trash");
+            }
+        });
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,39 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     Year = Integer.parseInt(etYear.getText().toString());
                 }
 
-                spRating.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        switch (position){
-                            case 0:
-                                Rating = "G";
-                                break;
-                            case 1:
-                                Rating = "PG";
-                                break;
-                            case 2:
-                                Rating = "PG13";
-                                break;
-                            case 3:
-                                Rating = "NC16";
-                                break;
-                            case 4:
-                                Rating = "M18";
-                                break;
-                            case 5:
-                                Rating = "R21";
-                                break;
-                            default:
-                                Rating = "";
-                                break;
-                        }
-                    }
 
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
                 if (Title.isEmpty() || Genre.isEmpty() || Year > 2022 || Year < 1960){
                     Toast.makeText(MainActivity.this, "Insert unsuccessful",
                             Toast.LENGTH_SHORT).show();

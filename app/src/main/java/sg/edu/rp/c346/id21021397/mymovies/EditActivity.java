@@ -26,12 +26,12 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
-        tvTest = findViewById(R.id.tvTest);
+        tvTest = findViewById(R.id.tvTestMain);
         etID = findViewById(R.id.etID);
         etTitle = findViewById(R.id.etTitle);
         etGenre = findViewById(R.id.etGenre);
         etYear = findViewById(R.id.etYear);
-        spRating = findViewById(R.id.spRating);
+        spRating = findViewById(R.id.spRatingMain);
         btnUpdate = findViewById(R.id.btnUpdate);
         btnDelete = findViewById(R.id.btnDelete);
         btnCancel = findViewById(R.id.btnCancel);

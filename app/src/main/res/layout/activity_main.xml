@@ -65,13 +65,13 @@
         android:text="@string/rating" />
 
     <Spinner
-        android:id="@+id/spRating"
+        android:id="@+id/spRatingMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/enter_rating" />
 
     <TextView
-        android:id="@+id/tvTest"
+        android:id="@+id/tvTestMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView" />
