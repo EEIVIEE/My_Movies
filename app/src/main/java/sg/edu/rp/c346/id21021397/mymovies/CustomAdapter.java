@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class CustomAdapter extends ArrayAdapter {
         TextView tvName = rowView.findViewById(R.id.tvName);
         TextView tvGenre = rowView.findViewById(R.id.tvGenre);
         TextView tvYear = rowView.findViewById(R.id.tvYear);
-        TextView tvRate = rowView.findViewById(R.id.tvRating);
+        ImageView ivRate = rowView.findViewById(R.id.imageViewRating);
 
 
         // Obtain the Android Version information based on the position
@@ -46,6 +47,19 @@ public class CustomAdapter extends ArrayAdapter {
         tvName.setText(currentMovie.getName());
         tvGenre.setText(String.valueOf(currentMovie.getGenre()));
         tvYear.setText(currentMovie.toString());
+        if(currentMovie.getRating().equals("G")  ){
+            ivRate.setImageResource(R.drawable.rating_g);
+        } else if(currentMovie.getRating().equals("PG") ){
+            ivRate.setImageResource(R.drawable.rating_pg);
+        } else if(currentMovie.getRating().equals("PG13")){
+            ivRate.setImageResource(R.drawable.rating_pg13);
+        } else if(currentMovie.getRating().equals("NC16")){
+            ivRate.setImageResource(R.drawable.rating_nc16);
+        } else if(currentMovie.getRating().equals("M18")){
+            ivRate.setImageResource(R.drawable.rating_m18);
+        } else if(currentMovie.getRating().equals("R21")){
+            ivRate.setImageResource(R.drawable.rating_r21);
+        }
 
 
 
