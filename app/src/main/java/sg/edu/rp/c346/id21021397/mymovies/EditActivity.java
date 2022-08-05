@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class EditActivity extends AppCompatActivity {
 
@@ -93,13 +94,32 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DBHelper dbh = new DBHelper(EditActivity.this);
-                data.setName(etTitle.getText().toString());
-                data.setGenre(etGenre.getText().toString());
-                data.setYearReleased(Integer.parseInt(etYear.getText().toString()));
-                data.setRating(Rating);
-                dbh.updateMovie(data);
-                dbh.close();
-                finish();
+                AlertDialog.Builder myBuilder = new AlertDialog.Builder(EditActivity.this);
+                myBuilder.setTitle("Notice");
+                myBuilder.setMessage("Title: " + etTitle.getText().toString() + "\n Genre: " + etGenre.getText().toString() +
+                        "\n Year: " + etYear.getText().toString() + "\n Rating: " + Rating);
+                myBuilder.setCancelable(false);
+
+                myBuilder.setPositiveButton("CANCEL UPDATE", null);
+
+                myBuilder.setNegativeButton("UPDATE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                        data.setName(etTitle.getText().toString());
+                        data.setGenre(etGenre.getText().toString());
+                        data.setYearReleased(Integer.parseInt(etYear.getText().toString()));
+                        data.setRating(Rating);
+                        dbh.updateMovie(data);
+                        dbh.close();
+                        finish();
+                    }
+                });
+
+                AlertDialog myDialog = myBuilder.create();
+                myDialog.show();
+
             }
         });
 
