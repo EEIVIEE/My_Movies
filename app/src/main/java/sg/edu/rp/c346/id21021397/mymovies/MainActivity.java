@@ -1,7 +1,9 @@
 package sg.edu.rp.c346.id21021397.mymovies;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -77,26 +79,42 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String Title = etTitle.getText().toString();
                 String Genre = etGenre.getText().toString();
-                int Year = 0;
-                if(etYear.getText().toString().isEmpty()){
 
-                } else {
-                    Year = Integer.parseInt(etYear.getText().toString());
-                }
+                AlertDialog.Builder myBuilder = new AlertDialog.Builder(MainActivity.this);
+                myBuilder.setTitle("Notice");
+                myBuilder.setMessage("Title: " + Title + "\n Genre: " + Genre + "\n Year: " + etYear.getText().toString() + "\n Rating: " + Rating);
+                myBuilder.setCancelable(false);
 
+                myBuilder.setPositiveButton("DO NOT INSERT", null);
 
-                if (Title.isEmpty() || Genre.isEmpty() || Year > 2022 || Year < 1960){
-                    Toast.makeText(MainActivity.this, "Insert unsuccessful",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    DBHelper dbh = new DBHelper(MainActivity.this);
-                    long inserted_id = dbh.insertMovie(Title, Genre, Year, Rating);
+                myBuilder.setNegativeButton("INSERT", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        int Year = 0;
+                        if(etYear.getText().toString().isEmpty()){
+                            Toast.makeText(MainActivity.this, "Enter a Valid Year", Toast.LENGTH_LONG).show();
+                        } else {
+                            Year = Integer.parseInt(etYear.getText().toString());
+                        }
+                        if (Title.isEmpty() || Genre.isEmpty() || Year > 2022 || Year < 1960){
+                            Toast.makeText(MainActivity.this, "Insert unsuccessful",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            DBHelper dbh = new DBHelper(MainActivity.this);
+                            long inserted_id = dbh.insertMovie(Title, Genre, Year, Rating);
 
-                    if (inserted_id != -1) {
-                        Toast.makeText(MainActivity.this, "Insert successful",
-                                Toast.LENGTH_SHORT).show();
+                            if (inserted_id != -1) {
+                                Toast.makeText(MainActivity.this, "Insert successful",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
                     }
-                }
+                });
+
+                AlertDialog myDialog = myBuilder.create();
+                myDialog.show();
+
+
             }
         });
 
